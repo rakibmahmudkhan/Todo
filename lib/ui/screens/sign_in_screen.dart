@@ -14,7 +14,6 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
-
       body: ScreenBackground(
           child: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -27,25 +26,38 @@ class _SignInScreenState extends State<SignInScreen> {
             Text("Get Started With",
                 style: textTheme.headlineSmall
                     ?.copyWith(fontWeight: FontWeight.w700)),
-            const SizedBox(
-              height: 40,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Email",
-              ),
-            ),
-            const SizedBox(height: 8),
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Password",
-              ),
-            ),
+            const SizedBox(),
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {},
               child: const Icon(Icons.arrow_circle_right_outlined),
-            )
+            ),
+            const SizedBox(height: 24),
+           Center(
+             child: Column(
+             
+               children: [
+                 TextButton(
+                   onPressed: () {},
+                   child: Text("Forgot Password",style:TextStyle(color: Colors.grey),),
+                 ),
+                 RichText(
+                   text: TextSpan(
+                       style: TextStyle(
+                           color: Colors.black,
+                           fontWeight: FontWeight.w600,
+                           fontSize: 14,
+                           letterSpacing: 0.5),
+                       text: "Don't Have an account?  ",
+                       children: [
+                         TextSpan(
+                             text: "sign Up",
+                             style: TextStyle(color: AppColors.themeColor))
+                       ]),
+                 )
+               ],
+             ),
+           )
           ],
         ),
       )),
