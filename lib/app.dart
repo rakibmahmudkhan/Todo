@@ -32,7 +32,7 @@ class _TaskManagerAppState extends State<TaskManagerApp> {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           fixedSize: const Size.fromWidth(double.maxFinite),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))),
     );
   }
 
@@ -42,8 +42,12 @@ class _TaskManagerAppState extends State<TaskManagerApp> {
       enabledBorder: _inputBorder(),
       errorBorder: _inputBorder (),
       focusedBorder: _inputBorder(),
+      hintStyle: TextStyle(
+          fontWeight: FontWeight.w300
+      ),
       fillColor: Colors.white,
       filled: true,
+
     );
   }
 
