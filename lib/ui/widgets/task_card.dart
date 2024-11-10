@@ -63,8 +63,10 @@ class _TaskCardState extends State<TaskCard> {
           return AlertDialog(
             title: const Text("Edit Status"),
             content: Column(
+              mainAxisSize: MainAxisSize.min,
               children: ["new", "Completed", "Cancelled", 'Progress'].map((e) {
                 return ListTile(
+                  onTap: (){},
                   title: Text(e),
                 );
               }).toList(),

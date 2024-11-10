@@ -21,38 +21,38 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       body: ScreenBackground(
           child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 82,
-                ),
-                Text("Get Started With",
-                    style: textTheme.headlineSmall
-                        ?.copyWith(fontWeight: FontWeight.w700)),
-                const SizedBox(
-                  height: 24,
-                ),
-                _buildSignInForm(),
-                const SizedBox(height: 24),
-                Center(
-                  child: Column(
-                    children: [
-                      TextButton(
-                        onPressed: _onTapForgotPasswordButton,
-                        child: Text(
-                          "Forgot Password",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                      _buildSignUpSection()
-                    ],
-                  ),
-                )
-              ],
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 82,
             ),
-          )),
+            Text("Get Started With",
+                style: textTheme.headlineSmall
+                    ?.copyWith(fontWeight: FontWeight.w700)),
+            const SizedBox(
+              height: 24,
+            ),
+            _buildSignInForm(),
+            const SizedBox(height: 24),
+            Center(
+              child: Column(
+                children: [
+                    TextButton(
+                    onPressed: _onTapForgotPasswordButton,
+                    child: Text(
+                      "Forgot Password",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                  _buildSignUpSection()
+                ],
+              ),
+            )
+          ],
+        ),
+      )),
     );
   }
 
@@ -99,7 +99,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
 
   void _onTapNextButton() {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MainBottomNavBarScreen()), (value)=> false);
+Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MainBottomNavBarScreen()), (value)=> false);
   }
 
   void _onTapForgotPasswordButton() {

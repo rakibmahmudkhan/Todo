@@ -21,33 +21,33 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
     return Scaffold(
       body: ScreenBackground(
           child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 82,
-                ),
-                Text("Pin Verification",
-                    style: textTheme.headlineSmall
-                        ?.copyWith(fontWeight: FontWeight.w700)),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text("A 6 digit verification otp has been sent to your email address ",
-                    style: textTheme.titleSmall
-                        ?.copyWith(color: Colors.grey)),
-                const SizedBox(
-                  height: 24,
-                ),
-                _buildOtpForm(),
-                const SizedBox(height: 48),
-                Center(
-                  child: _haveAccountSection(),
-                )
-              ],
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 82,
             ),
-          )),
+            Text("Pin Verification",
+                style: textTheme.headlineSmall
+                    ?.copyWith(fontWeight: FontWeight.w700)),
+            const SizedBox(
+              height: 8,
+            ),
+            Text("A 6 digit verification otp has been sent to your email address ",
+                style: textTheme.titleSmall
+                    ?.copyWith(color: Colors.grey)),
+            const SizedBox(
+              height: 24,
+            ),
+            _buildOtpForm(),
+            const SizedBox(height: 48),
+            Center(
+              child: _haveAccountSection(),
+            )
+          ],
+        ),
+      )),
     );
   }
 
@@ -60,14 +60,14 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
           animationType: AnimationType.fade,
           keyboardType: TextInputType.number,
           pinTheme: PinTheme(
-              shape: PinCodeFieldShape.box,
-              borderRadius: BorderRadius.circular(5),
-              fieldHeight: 50,
-              fieldWidth: 40,
-              activeFillColor: Colors.white,
-              inactiveFillColor: Colors.white,
-              selectedFillColor: Colors.white,
-              selectedColor: AppColors.themeColor
+            shape: PinCodeFieldShape.box,
+            borderRadius: BorderRadius.circular(5),
+            fieldHeight: 50,
+            fieldWidth: 40,
+            activeFillColor: Colors.white,
+          inactiveFillColor: Colors.white,
+          selectedFillColor: Colors.white,
+            selectedColor: AppColors.themeColor
           ),
           animationDuration: Duration(milliseconds: 300),
           backgroundColor: Colors.transparent,
@@ -77,7 +77,7 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
 
           appContext: context,
         ),
-        SizedBox(
+          SizedBox(
           height: 8,
         ),
         const SizedBox(height: 24),
@@ -108,7 +108,7 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
   }
 
   void _onTapNextButton() {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>const ResetPasswordScreen(),),);
+Navigator.push(context, MaterialPageRoute(builder: (context)=>const ResetPasswordScreen(),),);
   }
 
   void _onTapSignIn() {

@@ -21,7 +21,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
           _buildSummarySection(),
           Expanded(
             child: ListView.separated(
-              itemCount: 5,
+              itemCount: 10,
               itemBuilder: (context, index) {
                 return const TaskCard();
               },

@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:todo/ui/screens/profile_screen.dart';
 import 'package:todo/ui/screens/sign_in_screen.dart';
 
 import '../utils/app_color.dart';
 
 class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TMAppBar({
-    super.key,
+    super.key, this.isProfileScreenOpen= false
   });
-
+final bool isProfileScreenOpen;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.themeColor,
       title: Row(
         children: [
-          CircleAvatar(
-            radius: 16,
-            backgroundColor: Colors.white,
+          GestureDetector(
+            onTap: (){
+             if(isProfileScreenOpen){
+               return  ;
+             } else{ Navigator.push(context, MaterialPageRoute(builder: (context){return ProfileScreen();}));}
+            },
+            child: CircleAvatar(
+              radius: 16,
+              backgroundColor: Colors.white,
+            ),
           ),
           SizedBox(
             width: 26,
@@ -44,7 +52,7 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => SignInScreen()),
-                        (value) => false);
+                    (value) => false);
               },
               icon: Icon(Icons.logout))
         ],

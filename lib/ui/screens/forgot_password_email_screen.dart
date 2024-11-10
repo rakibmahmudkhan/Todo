@@ -19,33 +19,33 @@ class _ForgotPasswordEmailScreenState extends State<ForgotPasswordEmailScreen> {
     return Scaffold(
       body: ScreenBackground(
           child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 82,
-                ),
-                Text("Your Email Address",
-                    style: textTheme.headlineSmall
-                        ?.copyWith(fontWeight: FontWeight.w700)),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text("A 6 digit verification otp will be sent to your email address ",
-                    style: textTheme.titleSmall
-                        ?.copyWith(color: Colors.grey)),
-                const SizedBox(
-                  height: 24,
-                ),
-                _buildVerifyEmailForm(),
-                const SizedBox(height: 48),
-                Center(
-                  child: _haveAccountSection(),
-                )
-              ],
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 82,
             ),
-          )),
+            Text("Your Email Address",
+                style: textTheme.headlineSmall
+                    ?.copyWith(fontWeight: FontWeight.w700)),
+            const SizedBox(
+              height: 8,
+            ),
+            Text("A 6 digit verification otp will be sent to your email address ",
+                style: textTheme.titleSmall
+                    ?.copyWith(color: Colors.grey)),
+            const SizedBox(
+              height: 24,
+            ),
+            _buildVerifyEmailForm(),
+            const SizedBox(height: 48),
+            Center(
+              child: _haveAccountSection(),
+            )
+          ],
+        ),
+      )),
     );
   }
 
@@ -87,7 +87,7 @@ class _ForgotPasswordEmailScreenState extends State<ForgotPasswordEmailScreen> {
   }
 
   void _onTapNextButton() {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgotPasswordOtpScreen()));
+Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgotPasswordOtpScreen()));
   }
 
   void _onTapSignIn() {

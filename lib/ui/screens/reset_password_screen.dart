@@ -20,33 +20,33 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     return Scaffold(
       body: ScreenBackground(
           child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 82,
-                ),
-                Text("Set Password",
-                    style: textTheme.headlineSmall
-                        ?.copyWith(fontWeight: FontWeight.w700)),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text("Minimum length password 8 character with Latter and number combination",
-                    style: textTheme.titleSmall
-                        ?.copyWith(color: Colors.grey)),
-                const SizedBox(
-                  height: 24,
-                ),
-                _buildPasswordResetForm(),
-                const SizedBox(height: 48),
-                Center(
-                  child: _haveAccountSection(),
-                )
-              ],
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 82,
             ),
-          )),
+            Text("Set Password",
+                style: textTheme.headlineSmall
+                    ?.copyWith(fontWeight: FontWeight.w700)),
+            const SizedBox(
+              height: 8,
+            ),
+            Text("Minimum length password 8 character with Latter and number combination",
+                style: textTheme.titleSmall
+                    ?.copyWith(color: Colors.grey)),
+            const SizedBox(
+              height: 24,
+            ),
+            _buildPasswordResetForm(),
+            const SizedBox(height: 48),
+            Center(
+              child: _haveAccountSection(),
+            )
+          ],
+        ),
+      )),
     );
   }
 
