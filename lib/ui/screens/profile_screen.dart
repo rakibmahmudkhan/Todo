@@ -79,34 +79,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Container _buildphotoPicker(){
+  Widget _buildphotoPicker() {
     return Container(
       height: 55,
       decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8),
         color: Colors.white,
       ),
-      child: Row(children: [
-        Container(
-          width: 100,
-          height: 55,
-          decoration: BoxDecoration(
-            color: Colors.grey,
-            borderRadius: BorderRadius.only(
-
-                topLeft: Radius.circular(8),
-                bottomLeft: Radius.circular(8),
-            )
-
-           ),
-          alignment: Alignment.center,
-          child: Text("Photo",style: TextStyle(fontSize: 16,fontWeight:FontWeight.w600 ),),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("Selected Photo"),
-        )
-      ],),
+      child: Row(
+        children: [
+          Container(
+            width: 100,
+            height: 55,
+            decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  bottomLeft: Radius.circular(8),
+                )),
+            alignment: Alignment.center,
+            child: Text(
+              "Photo",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Selected Photo"),
+          )
+        ],
+      ),
     );
   }
 }
