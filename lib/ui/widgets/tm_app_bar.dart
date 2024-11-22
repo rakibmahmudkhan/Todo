@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/ui/controller/auth_controller.dart';
 import 'package:todo/ui/screens/profile_screen.dart';
 import 'package:todo/ui/screens/sign_in_screen.dart';
 
@@ -48,7 +49,8 @@ final bool isProfileScreenOpen;
             ),
           ),
           IconButton(
-              onPressed: () {
+              onPressed: () async{
+                await AuthController.clearUserData();
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => SignInScreen()),

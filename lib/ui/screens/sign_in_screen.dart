@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo/data/models/network_response.dart';
 import 'package:todo/data/services/network_caller.dart';
+import 'package:todo/ui/controller/auth_controller.dart';
 import 'package:todo/ui/screens/forgot_password_email_screen.dart';
 import 'package:todo/ui/screens/main_bottom_nav_bar_screen.dart';
 import 'package:todo/ui/screens/sign_up_screen.dart';
@@ -30,6 +31,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: ScreenBackground(
           child: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -73,34 +75,32 @@ class _SignInScreenState extends State<SignInScreen> {
       child: Column(
         children: [
           TextFormField(
-            decoration: const InputDecoration(hintText: "Email"),
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: _emailTEController,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              if (value?.isEmpty ?? true) {
-                return "Enter valid email";
-              }
-              return null;
-            },
             keyboardType: TextInputType.emailAddress,
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          TextFormField(
-            decoration: const InputDecoration(hintText: "Password"),
-            controller: _passwordTEController,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
+            decoration: const InputDecoration(hintText: 'Email'),
+            validator: (String? value) {
               if (value?.isEmpty ?? true) {
-                return "Enter Password";
-              }
-              if (value!.length < 5) {
-                return "Enter a password more than 6 character";
+                return 'Enter a valid email';
               }
               return null;
             },
-            obscureText: true,
+          ),
+          const SizedBox(height: 8),
+          TextFormField(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            controller: _passwordTEController,
+            obscureText: false,
+            decoration: const InputDecoration(hintText: 'Password'),
+            validator: (String? value) {
+              if (value?.isEmpty ?? true) {
+                return 'Enter a your password';
+              }
+              if (value!.length <= 5) {
+                return 'Enter a password more than 6 characters';
+              }
+              return null;
+            },
           ),
           const SizedBox(height: 24),
           Visibility(
@@ -108,7 +108,7 @@ class _SignInScreenState extends State<SignInScreen> {
             replacement: const CenteredCircularProgressIndicator(),
             child: ElevatedButton(
               onPressed: _onTapNextButton,
-              child: Icon(Icons.arrow_circle_right_outlined),
+              child: const Icon(Icons.arrow_circle_right_outlined),
             ),
           ),
         ],
@@ -138,34 +138,32 @@ class _SignInScreenState extends State<SignInScreen> {
     if (_formKey.currentState!.validate()) {
       _onSignIn();
     }
+    return;
   }
 
   Future<void> _onSignIn() async {
     _inProgress = true;
     setState(() {});
 
-    Map<String, dynamic> requestBody= {
-      'email':_emailTEController.text.trim(),
-      'password':_passwordTEController.text
-    }
-    ;
+    Map<String, dynamic> requestBody = {
+      'email': "${_emailTEController.text.trim()}",
+      'password': "${_passwordTEController.text}"
+    };
+    print("RMK");
+    final NetworkResponse response = await NetworkCaller.postRequest(
+        url: "${Urls.logIn}", body: requestBody);
 
-    final NetworkResponse response =
-        await NetworkCaller.postRequest(url: Urls.logIn,body: requestBody);
-
-    _inProgress = true;
+    _inProgress = false;
     setState(() {});
-    if(response.isSuccess){
+    if (response.isSuccess) {
+      await AuthController.saveAccessToken(response.responseData['token']);
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => MainBottomNavBarScreen()),
-              (value) => false);
-    }else{
+          (value) => false);
+    } else {
       showSnackBarMessage(context, response.errorMessage, true);
     }
-
-
-
   }
 
   void _onTapForgotPasswordButton() {
